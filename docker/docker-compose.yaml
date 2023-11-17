@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  refugee_bot:
+    build:
+      context: ..
+      dockerfile: docker/refugee_bot.dockerfile
+    env_file:
+      - .env
+    environment:
+      - telegram_refugees_ukr_ch_bot=${telegram_refugees_ukr_ch_bot}
+      - OPENAI_ORGANIZATION=${OPENAI_ORGANIZATION}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - DEEPL_API_KEY=${DEEPL_API_KEY}
+
