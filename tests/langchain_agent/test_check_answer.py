@@ -50,7 +50,7 @@ class TestChatBot(unittest.TestCase):
         self.bot = ChatBot()  # Assuming ChatBot is defined elsewhere in your code
 
     def test_check_answer(self):
-        output_csv_path = 'tests/loggs/test_top70_kilian.csv'
+        output_csv_path = 'tests/loggs/test_top70.csv'
         
         # Check if the directory exists, if not create it
         os.makedirs(os.path.dirname(output_csv_path), exist_ok=True)
@@ -71,7 +71,7 @@ class TestChatBot(unittest.TestCase):
                 already_answered_questions.add(row[0])
 
         non_answered_questions = []
-        with open('tests/test_data/test_top70_kilian.txt', 'r', encoding='utf-8-sig') as file:
+        with open('tests/test_data/test_top70.txt', 'r', encoding='utf-8-sig') as file:
             questions = [line.strip() for line in file if not line.startswith('#')]
             non_answered_questions = [q for q in questions if q not in already_answered_questions]
 
@@ -82,8 +82,8 @@ class TestChatBot(unittest.TestCase):
                 check_single_message(self.bot, question, csv_writer) 
     
     def test_add_base_GPT_answers(self):
-        input_csv_path = 'tests/loggs/test_top70_kilian.csv'
-        temp_output_path = 'tests/loggs/temp_test_top70_kilian.csv'
+        input_csv_path = 'tests/loggs/test_top70.csv'
+        temp_output_path = 'tests/loggs/temp_test_top70.csv'
 
         with open(input_csv_path, 'r', newline='', encoding='utf-8-sig') as infile, \
             open(temp_output_path, 'w', newline='', encoding='utf-8-sig') as outfile:
